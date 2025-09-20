@@ -1,364 +1,269 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Washington Assunção — Contador | Mentor | Consultor Financeiro</title>
-  <meta name="description" content="Prazer, eu sou Washington Assunção. Contador, mentor e consultor financeiro ajudando pessoas a dominarem seus números com segurança." />
-  <meta property="og:title" content="Washington Assunção — Contador | Mentor | Consultor Financeiro" />
-  <meta property="og:description" content="Transforme desafios financeiros em oportunidades com clareza e estratégia." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0E2340" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --navy:#0E2340;
-      --gold:#C8A24D;
-      --off:#F6F7FB;
-      --ink:#0B1424;
-      --muted:#7D8AA0;
-      --radius:14px;
-      --container:1120px;
-      --shadow:0 10px 30px rgba(0,0,0,.12);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);background:#fff;line-height:1.5}
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.25rem;border-radius:999px;border:2px solid transparent;font-weight:700;letter-spacing:.2px;transition:.25s ease;white-space:nowrap}
-    .btn-primary{background:var(--gold);color:var(--navy)}
-    .btn-primary:hover{filter:brightness(.95);transform:translateY(-1px)}
-    .btn-outline{background:transparent;border-color:rgba(255,255,255,.95);color:#fff}
-    .tag{display:inline-block;padding:.35rem .7rem;border-radius:999px;font-weight:700;font-size:.8rem;background:rgba(200,162,77,.18);color:#F4E3B6}
-    section{scroll-margin-top:84px}
-    /* Header */
-    .site-header{position:sticky;top:0;z-index:50;background:rgba(14,35,64,.96);color:#fff;border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:saturate(140%) blur(6px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800}
-    .brand .mark{width:14px;height:14px;background:var(--gold);border-radius:4px;transform:skewX(-10deg)}
-    .nav-links{display:flex;gap:1rem;align-items:center}
-    .nav-links a{padding:.5rem .75rem;border-radius:8px;color:#cfd8e6}
-    .nav-links a:hover{background:rgba(255,255,255,.08);color:#fff}
-    .hamb{display:none;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.15);align-items:center;justify-content:center}
-    .hamb i{width:18px;height:2px;background:#fff;box-shadow:0 6px 0 #fff,0 -6px 0 #fff;border-radius:2px}
-    @media (max-width:960px){
-      .hamb{display:inline-flex}
-      .nav-links{position:fixed;inset:64px 0 auto 0;background:var(--navy);flex-direction:column;padding:18px;gap:4px;display:none}
-      .nav-links.show{display:flex}
-      .nav-links a{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,.06)}
-    }
-    /* Hero — fundo por device, sem shapes adicionais */
-    .hero{position:relative;color:#fff;background:var(--navy);min-height:74vh;display:grid;align-items:end}
-    .hero::before{
-      content:"";position:absolute;inset:0;background:
-        linear-gradient(180deg, rgba(14,35,64,.35) 0%, rgba(14,35,64,.55) 50%, rgba(14,35,64,.85) 100%);
-      pointer-events:none;
-    }
-    .hero{background-image:url('hero-mobile.jpg');background-size:cover;background-position:center top}
-    @media (min-width:961px){
-      .hero{min-height:78vh;background-image:url('hero-desktop.jpg');background-position:center right}
-    }
-    .hero-inner{position:relative;z-index:1;padding:40px 0}
-    .hero h1{font-size:clamp(2rem,3.4vw,3rem);line-height:1.1;margin:0 0 12px}
-    .hero p{color:#d7e1f3;font-size:clamp(1rem,1.2vw,1.1rem);max-width:64ch}
-    .hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:18px}
-    /* Seções genéricas */
-    .sec{padding:56px 0}
-    .sec h2{font-size:clamp(1.6rem,2.2vw,2.2rem);margin:0 0 10px;color:var(--navy)}
-    .lead{color:var(--muted)}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    @media (max-width:960px){.grid-3,.grid-2{grid-template-columns:1fr}}
-    .card{background:#fff;border:1px solid #e7eaf2;border-radius:var(--radius);padding:20px;box-shadow:0 6px 20px rgba(14,35,64,.03)}
-    .icon-dot{width:10px;height:10px;background:var(--gold);border-radius:3px;display:inline-block;margin-right:.6rem}
-    /* Carrossel (sem cara de print) */
-    .carousel-wrap{position:relative}
-    .carousel{display:grid;grid-auto-flow:column;grid-auto-columns:92%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
-    .slide{scroll-snap-align:center;border-radius:14px;overflow:hidden;position:relative;background:#0b1220;box-shadow:var(--shadow);aspect-ratio:4/5}
-    .slide img{width:100%;height:100%;object-fit:cover}
-    .pos-top img{object-position:center 18%}
-    .pos-mid img{object-position:center 45%}
-    .pos-bot img{object-position:center 70%}
-    .legend{position:absolute;left:12px;bottom:10px;background:rgba(14,35,64,.8);color:#fff;padding:.4rem .6rem;border-radius:10px;font-weight:700;font-size:.9rem;backdrop-filter:blur(6px)}
-    .ctrl{position:absolute;inset:0;pointer-events:none}
-    .ctrl button{pointer-events:auto;position:absolute;top:calc(50% - 22px);width:42px;height:42px;border-radius:999px;border:1px solid #e7eaf2;background:#fff;box-shadow:var(--shadow);display:grid;place-items:center;font-weight:800;color:var(--navy)}
-    .ctrl .prev{left:-10px}.ctrl .next{right:-10px}
-    @media (min-width:961px){.carousel{grid-auto-columns:33%}.slide{aspect-ratio:16/9}}
-    /* Steps */
-    .steps{counter-reset:step}
-    .step{display:flex;gap:12px;align-items:flex-start;padding:18px;border:1px dashed #d9dfeb;border-radius:14px;background:#fbfcff}
-    .step::before{counter-increment:step;content:counter(step);width:36px;height:36px;border-radius:10px;background:var(--gold);color:var(--navy);font-weight:800;display:grid;place-items:center;flex:0 0 36px}
-    /* Contato */
-    .contact{background:linear-gradient(180deg,#FAFBFF,#F3F6FD)}
-    .form{display:grid;gap:12px}
-    .input, textarea{width:100%;padding:14px 16px;border:1px solid #dfe5f2;border-radius:12px;font:inherit;background:#fff}
-    textarea{min-height:120px;resize:vertical}
-    .whats-fab{position:fixed;right:16px;bottom:calc(env(safe-area-inset-bottom) + 16px);width:56px;height:56px;border-radius:999px;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.2);font-weight:900;z-index:40}
-    /* Instagram */
-    .ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
-    .ig-item{border-radius:12px;overflow:hidden;aspect-ratio:1/1;background:#0b1220}
-    .ig-item img{width:100%;height:100%;object-fit:cover}
-    @media (max-width:960px){.ig-grid{grid-template-columns:repeat(3,1fr)}}
-    /* Footer */
-    footer{background:var(--navy);color:#cfd8e6;padding:32px 0;border-top:1px solid rgba(255,255,255,.06)}
-    .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-    .foot a{color:#d7e1f3}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Washington Assunção — Contador | Mentor | Consultor Financeiro</title>
+<meta name="description" content="Contabilidade estratégica e consultoria financeira para transformar números em resultados." />
+<meta property="og:title" content="Washington Assunção — Contador | Mentor | Consultor Financeiro" />
+<meta property="og:description" content="Previsibilidade de caixa, menos risco e decisões claras — sem contabilidade enrolada." />
+<meta name="theme-color" content="#0E2340" />
+<link rel="canonical" href="https://seu-dominio.com/"/>
+<style>
+/* ====== Tudo em 1 arquivo (sem dependência externa) ====== */
+:root{
+  --navy:#0E2340; --gold:#C8A24D; --ink:#0B1424; --off:#F6F7FB; --muted:#7D8AA0;
+  --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.12); --container:min(1120px, 92vw);
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color:var(--ink); background:#fff}
+img{max-width:100%; display:block}
+a{color:inherit; text-decoration:none}
+.container{max-width:var(--container); margin:0 auto; padding-inline:16px}
+.tag{display:inline-block;padding:.35rem .7rem;border-radius:999px;font-weight:700;font-size:.8rem;background:rgba(200,162,77,.15);color:var(--gold)}
+.btn{display:inline-flex;gap:.6rem;align-items:center;justify-content:center;border-radius:999px;padding:.9rem 1.2rem;font-weight:700;border:2px solid transparent;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--gold); color:var(--navy)}
+.btn-primary:hover{filter:brightness(.95); transform:translateY(-1px)}
+.btn-outline{border-color:rgba(255,255,255,.8); color:#fff}
+.btn-outline:hover{background:rgba(255,255,255,.06)}
+section{scroll-margin-top:84px}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(14,35,64,.96),rgba(14,35,64,.92));color:#fff;border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:.75rem;font-weight:800}
+.brand-mark{width:14px;height:14px;background:var(--gold);border-radius:4px;transform:skewX(-10deg)}
+.nav-links{display:flex;gap:.5rem;align-items:center}
+.nav-links a{padding:.5rem .7rem;border-radius:10px;color:#cfd8e6}
+.nav-links a:hover{background:rgba(255,255,255,.08);color:#fff}
+.hamb{display:none;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.15);align-items:center;justify-content:center}
+.hamb span,.hamb::before,.hamb::after{content:"";display:block;width:18px;height:2px;background:#fff;border-radius:2px}
+.hamb span{box-shadow:0 6px 0 #fff, 0 -6px 0 #fff}
+@media (max-width:960px){
+  .hamb{display:inline-flex}
+  .nav-links{position:fixed;inset:64px 0 auto 0;background:var(--navy);flex-direction:column;padding:12px;display:none}
+  .nav-links.show{display:flex}
+  .nav-links a{width:100%;padding:14px;border:1px solid rgba(255,255,255,.06)}
+}
+
+/* Hero */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;min-height:72vh;padding:28px 0}
+.hero h1{font-weight:900;font-size:clamp(2rem,3.6vw,3rem);line-height:1.1;margin:0 0 10px}
+.hero p{color:#d7e1f3}
+.hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:14px}
+.hero-figure{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.hero-figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,35,64,.4) 100%)}
+.hero img{width:100%;height:100%;object-fit:cover}
+.hero-shape{position:absolute;right:-14vw;top:-14vw;width:40vw;height:40vw;background:var(--gold);transform:rotate(35deg);filter:drop-shadow(0 40px 80px rgba(200,162,77,.15))}
+@media (max-width:960px){.hero-inner{grid-template-columns:1fr;gap:18px;min-height:unset}.hero-figure{height:58vh;border-radius:18px}.hero-shape{right:-30vw;top:-30vw;width:90vw;height:90vw}}
+
+.sec{padding:70px 0}
+.sec h2{font-size:clamp(1.6rem,2.2vw,2.2rem);margin:0 0 6px}
+.lead{color:var(--muted)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media (max-width:960px){.grid-3,.grid-2{grid-template-columns:1fr}}
+.card{background:var(--off);border:1px solid #e7eaf2;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(14,35,64,.03)}
+
+/* Carousel simplificado (a prova de mobile) */
+.carousel{display:grid;grid-auto-flow:column;grid-auto-columns:85%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.slide{scroll-snap-align:center;border-radius:16px;overflow:hidden;position:relative;background:#0b1220;box-shadow:var(--shadow);aspect-ratio:16/9}
+.slide .legend{position:absolute;left:12px;bottom:10px;background:rgba(14,35,64,.75);color:#fff;padding:.35rem .6rem;border-radius:10px;font-weight:700;font-size:.9rem}
+.ctrl{position:relative;display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+.ctrl button{width:42px;height:42px;border-radius:999px;border:1px solid #e6e9f2;background:#fff;box-shadow:var(--shadow);font-weight:800;color:var(--navy)}
+@media (min-width:961px){.carousel{grid-auto-columns:33%}}
+@media (max-width:560px){.carousel{grid-auto-columns:92%}.slide{aspect-ratio:4/5}}
+
+/* Contato + Footer + FAB */
+.input,textarea{width:100%;padding:14px 16px;border:1px solid #dfe5f2;border-radius:12px;font:inherit;background:#fff}
+textarea{min-height:120px;resize:vertical}
+footer{background:var(--navy);color:#cfd8e6;padding:32px 0;border-top:1px solid rgba(255,255,255,.06)}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.whats-fab{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:999px;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);font-weight:900;z-index:40}
+.mt-1{margin-top:.5rem}.mt-2{margin-top:1rem}.mt-3{margin-top:1.5rem}
+</style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header" role="banner">
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="Início"><span class="mark" aria-hidden="true"></span><span>Washington Assunção</span></a>
-      <nav aria-label="Menu principal">
-        <button class="hamb" id="hamb" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span class="sr-only">Menu</span></button>
-        <div class="nav-links" id="menu" role="menu">
-          <a href="#sobre" role="menuitem">Sobre</a>
-          <a href="#servicos" role="menuitem">Serviços</a>
-          <a href="#audiencia" role="menuitem">Para quem é</a>
-          <a href="#momentos" role="menuitem">Momentos</a>
-          <a href="#beneficios" role="menuitem">Benefícios</a>
-          <a href="#processo" role="menuitem">Processo</a>
-          <a href="#contato" role="menuitem">Contato</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+<header class="site-header" role="banner">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Início">
+      <span class="brand-mark" aria-hidden="true"></span><span>Washington Assunção</span>
+    </a>
+    <nav aria-label="Menu principal">
+      <button class="hamb" id="hamb" aria-expanded="false" aria-controls="menu"><span class="sr-only">Abrir menu</span><span aria-hidden="true"></span></button>
+      <div class="nav-links" id="menu">
+        <a href="#sobre">Sobre</a><a href="#servicos">Serviços</a><a href="#momentos">Momentos</a>
+        <a href="#beneficios">Benefícios</a><a href="#processo">Processo</a><a href="#contato">Contato</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero" id="top" aria-label="Apresentação">
-    <div class="container hero-inner">
-      <div>
-        <div class="tag">Contador • Mentor • Consultor Financeiro</div>
-        <h1>Prazer, eu sou Washington Assunção</h1>
-        <p>Contador, mentor e consultor financeiro ajudando pessoas a dominarem seus números com segurança.</p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#contato">Agendar conversa gratuita</a>
-          <a class="btn btn-outline" href="#servicos">Ver como posso te ajudar</a>
-        </div>
+<section class="hero" id="top">
+  <div class="hero-shape" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-badge"><span class="tag">Contador • Mentor • Consultor</span></div>
+      <h1>Prazer, eu sou Washington Assunção</h1>
+      <p>Previsibilidade de caixa, menos risco e decisões claras — sem contabilidade enrolada.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contato">Agendar conversa gratuita</a>
+        <a class="btn btn-outline" href="#servicos">Ver serviços</a>
       </div>
     </div>
-  </section>
 
-  <!-- SOBRE -->
-  <section class="sec" id="sobre">
-    <div class="container">
-      <h2>Sobre mim</h2>
-      <p class="lead">Mais de 20 anos ajudando pessoas a organizarem suas finanças com clareza. Minha missão é transformar números em resultados consistentes — com proximidade, didática e foco no que realmente importa.</p>
+    <!-- FOTO DO HERO — troque o src por um link seu (pode ser do Instagram/CDN/Google Drive com compartilhamento público) -->
+    <figure class="hero-figure" aria-label="Washington Assunção">
+      <img
+        src="https://dummyimage.com/1100x1400/0e2340/ffffff.jpg&text=Sua+foto+aqui"
+        alt="Washington Assunção, traje azul sobre fundo navy."
+        width="1100" height="1400" loading="eager" />
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="sobre">
+  <div class="container">
+    <h2>Sobre mim</h2>
+    <p class="lead">Sou contador, coach e consultor financeiro. Transformo números em decisão, com disciplina e didática para você ganhar previsibilidade sem complicação.</p>
+  </div>
+</section>
+
+<section class="sec" id="servicos">
+  <div class="container">
+    <h2>O que eu faço por você</h2>
+    <div class="grid-3 mt-2">
+      <div class="card"><strong>Contabilidade Empresarial</strong><p class="mt-1">Rotina contábil, fiscal e folha com visão de negócio.</p></div>
+      <div class="card"><strong>Planejamento Financeiro</strong><p class="mt-1">Fluxo de caixa, metas e orçamento para crescer com segurança.</p></div>
+      <div class="card"><strong>Regularização & IR</strong><p class="mt-1">Impostos em dia, declaração sem dor de cabeça.</p></div>
+      <div class="card"><strong>Mentoria p/ Empreendedores</strong><p class="mt-1">Leitura de números, precificação e decisões melhores.</p></div>
+      <div class="card"><strong>Consultoria Pontual</strong><p class="mt-1">Sessões focadas para dúvidas e próximos passos.</p></div>
+      <div class="card"><strong>Educação Financeira</strong><p class="mt-1">Métodos práticos para sair do improviso.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SERVIÇOS -->
-  <section class="sec" id="servicos">
-    <div class="container">
-      <h2>Como posso te ajudar</h2>
-      <div class="grid-3" style="margin-top:12px">
-        <div class="card"><strong><span class="icon-dot"></span>Contabilidade Empresarial</strong><p class="lead">Rotina contábil, fiscal e folha com visão estratégica.</p></div>
-        <div class="card"><strong><span class="icon-dot"></span>Planejamento Financeiro</strong><p class="lead">Orçamento, metas e previsibilidade para decisões melhores.</p></div>
-        <div class="card"><strong><span class="icon-dot"></span>Regularização & IR</strong><p class="lead">Impostos em dia e declaração sem dor de cabeça.</p></div>
-        <div class="card"><strong><span class="icon-dot"></span>Mentoria de Negócios</strong><p class="lead">Acompanhamento para leitura de números e crescimento.</p></div>
+<section class="sec" id="momentos">
+  <div class="container">
+    <h2>Momentos</h2>
+    <p class="lead">Dia a dia — escritório, estudos, disciplina e trabalho em campo.</p>
+
+    <div class="carousel" id="carousel" aria-roledescription="carousel" aria-live="polite" tabindex="0">
+      <!-- TROQUE os src pelos seus links de imagens (4 no total). Funciona mesmo em 1 arquivo. -->
+      <figure class="slide"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop" alt="No escritório"><figcaption class="legend">No escritório</figcaption></figure>
+      <figure class="slide"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop" alt="Minha expertise"><figcaption class="legend">Minha expertise</figcaption></figure>
+      <figure class="slide"><img src="https://images.unsplash.com/photo-1519444793793-7f6db7d63c89?q=80&w=1200&auto=format&fit=crop" alt="Disciplina: ciclismo"><figcaption class="legend">Disciplina: ciclismo</figcaption></figure>
+      <figure class="slide"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1600&auto=format&fit=crop" alt="Trabalho em campo"><figcaption class="legend">Trabalho em campo</figcaption></figure>
+    </div>
+    <div class="ctrl"><button id="prev" aria-label="Anterior">‹</button><button id="next" aria-label="Próximo">›</button></div>
+  </div>
+</section>
+
+<section class="sec" id="beneficios">
+  <div class="container">
+    <h2>Benefícios</h2>
+    <div class="grid-3 mt-2">
+      <div class="card"><strong>Clareza</strong><p class="mt-1">Entenda seus números sem complicação.</p></div>
+      <div class="card"><strong>Decisão</strong><p class="mt-1">Planeje com dados e evite erros caros.</p></div>
+      <div class="card"><strong>Tranquilidade</strong><p class="mt-1">Rotina contábil em dia para focar no resultado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="processo">
+  <div class="container">
+    <h2>Como funciona</h2>
+    <div class="grid-3 mt-2">
+      <div class="card"><strong>Conversa</strong><p class="mt-1">Entendo seu momento e objetivos.</p></div>
+      <div class="card"><strong>Diagnóstico</strong><p class="mt-1">Mapeio números, riscos e oportunidades.</p></div>
+      <div class="card"><strong>Plano & Acompanhamento</strong><p class="mt-1">Implementação simples para manter o rumo.</p></div>
+    </div>
+    <div class="mt-3"><a class="btn btn-primary" href="#contato">Quero dar o primeiro passo</a></div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--navy); color:#fff;">
+  <div class="container">
+    <h2>Pronto para transformar a forma como lida com seu dinheiro?</h2>
+    <p class="lead" style="color:#d7e1f3">Vamos construir uma base sólida para decisões seguras e resultados consistentes.</p>
+    <a class="btn btn-primary mt-2" href="#contato">Agendar conversa</a>
+  </div>
+</section>
+
+<section class="sec" id="contato">
+  <div class="container">
+    <h2>Contato</h2>
+    <div class="grid-2 mt-2">
+      <div class="card">
+        <strong>Fale comigo</strong>
+        <form class="mt-1" id="form">
+          <label class="sr-only" for="nome">Seu nome</label>
+          <input class="input" type="text" id="nome" placeholder="Seu nome" required>
+          <label class="sr-only" for="whats">Seu WhatsApp</label>
+          <input class="input mt-1" type="tel" id="whats" placeholder="Seu WhatsApp">
+          <label class="sr-only" for="msg">Mensagem</label>
+          <textarea class="mt-1" id="msg" placeholder="Como posso ajudar?" required></textarea>
+          <button class="btn btn-primary mt-1" type="submit">Enviar mensagem</button>
+        </form>
+      </div>
+      <div class="card">
+        <strong>Atendimento</strong>
+        <ul class="mt-1">
+          <li>Online e presencial (agenda sob consulta)</li>
+          <li>Fuso: Brasília (BRT)</li>
+          <li>E-mail: <a href="mailto:contato@exemplo.com">contato@exemplo.com</a></li>
+        </ul>
+        <p class="mt-2">Preferir WhatsApp? Toque no botão verde no canto.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PARA QUEM É -->
-  <section class="sec" id="audiencia">
-    <div class="container">
-      <h2>Para quem é o meu serviço</h2>
-      <div class="grid-2" style="margin-top:12px">
-        <div class="card">
-          <strong>Pessoas</strong>
-          <ul class="lead">
-            <li>Querem organizar as finanças e tomar decisões com segurança;</li>
-            <li>Precisam declarar IR sem erros;</li>
-            <li>Buscam aprender a cuidar melhor do dinheiro.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Empresas</strong>
-          <ul class="lead">
-            <li>MEI e pequenas empresas que precisam de contabilidade parceira;</li>
-            <li>Quem quer previsibilidade de caixa e redução de riscos;</li>
-            <li>Empreendedores que buscam margem saudável.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+<footer>
+  <div class="container foot">
+    <div class="credit">© <span id="year"></span> Washington Assunção — Contabilidade & Consultoria</div>
+    <nav class="credit"><a href="#top">Início</a> · <a href="#servicos">Serviços</a> · <a href="#contato">Contato</a></nav>
+  </div>
+</footer>
 
-  <!-- MOMENTOS (CARROSSEL) -->
-  <section class="sec" id="momentos">
-    <div class="container">
-      <h2>Momentos</h2>
-      <p class="lead">Um pouco do meu dia a dia — escritório, estudos, disciplina e trabalho em campo.</p>
+<a class="whats-fab" href="#" id="whatsBtn" aria-label="Abrir WhatsApp">WA</a>
 
-      <div class="carousel-wrap" style="margin-top:12px">
-        <div class="carousel" id="carousel" aria-label="Carrossel de momentos">
-          <figure class="slide pos-mid">
-            <img src="moment-1.jpg" alt="Washington no escritório.">
-            <figcaption class="legend">No escritório</figcaption>
-          </figure>
-          <figure class="slide pos-top">
-            <img src="moment-2.jpg" alt="Minha expertise em soluções estratégicas.">
-            <figcaption class="legend">Minha expertise</figcaption>
-          </figure>
-          <figure class="slide pos-bot">
-            <img src="moment-3.jpg" alt="Disciplina: ciclismo e equilíbrio.">
-            <figcaption class="legend">Disciplina: ciclismo</figcaption>
-          </figure>
-          <figure class="slide pos-mid">
-            <img src="moment-4.jpg" alt="Trabalho em campo, foco e estratégia.">
-            <figcaption class="legend">Trabalho em campo</figcaption>
-          </figure>
-        </div>
-        <div class="ctrl" aria-hidden="false">
-          <button class="prev" id="prev" aria-label="Slide anterior">‹</button>
-          <button class="next" id="next" aria-label="Próximo slide">›</button>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+/* Menu mobile */
+const hamb = document.getElementById('hamb'); const menu = document.getElementById('menu');
+hamb.addEventListener('click', ()=>{ const open = menu.classList.toggle('show'); hamb.setAttribute('aria-expanded', open); document.documentElement.style.overflow = open ? 'hidden' : '' })
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{ menu.classList.remove('show'); document.documentElement.style.overflow='' }))
 
-  <!-- BENEFÍCIOS -->
-  <section class="sec" id="beneficios">
-    <div class="container">
-      <h2>Benefícios</h2>
-      <div class="grid-3" style="margin-top:12px">
-        <div class="card"><strong>Clareza</strong><p class="lead">Entenda seus números e indicadores sem complicação.</p></div>
-        <div class="card"><strong>Decisão</strong><p class="lead">Planeje com dados e evite erros caros.</p></div>
-        <div class="card"><strong>Tranquilidade</strong><p class="lead">Rotina em dia para focar no que gera resultado.</p></div>
-      </div>
-    </div>
-  </section>
+/* Carousel botões + setas teclado */
+const carousel = document.getElementById('carousel'), prev = document.getElementById('prev'), next = document.getElementById('next');
+const scrollByW = (dir)=> carousel.scrollBy({left: dir*carousel.clientWidth*0.9, behavior:'smooth'});
+prev.addEventListener('click', ()=>scrollByW(-1)); next.addEventListener('click', ()=>scrollByW(1));
+carousel.addEventListener('keydown', e=>{ if(e.key==='ArrowRight') next.click(); if(e.key==='ArrowLeft') prev.click() });
 
-  <!-- PROCESSO -->
-  <section class="sec" id="processo">
-    <div class="container">
-      <h2>Como funciona o atendimento</h2>
-      <div class="grid-3 steps" style="margin-top:12px">
-        <div class="step"><div><strong>Agende a conversa</strong><p class="lead">Primeiro contato rápido para entender seu momento.</p></div></div>
-        <div class="step"><div><strong>Entenda seus números</strong><p class="lead">Diagnóstico claro, riscos e oportunidades.</p></div></div>
-        <div class="step"><div><strong>Orientação personalizada</strong><p class="lead">Plano prático e acompanhamento.</p></div></div>
-      </div>
-      <div style="margin-top:16px"><a class="btn btn-primary" href="#contato">Quero dar o primeiro passo</a></div>
-    </div>
-  </section>
+/* WhatsApp */
+const form = document.getElementById('form'); const whatsBtn = document.getElementById('whatsBtn');
+const WHATS_NUMBER = '5563999999999'; // <-- TROQUE AQUI (DDI+DDD+NÚMERO)
+function openWhats(msg){
+  const url = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(msg)}&utm_source=site&utm_medium=cta`;
+  window.open(url, '_blank','noopener');
+}
+form.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const nome = document.getElementById('nome').value.trim();
+  const tel  = document.getElementById('whats').value.trim();
+  const msg  = document.getElementById('msg').value.trim();
+  const texto = `Olá, meu nome é ${nome}. WhatsApp: ${tel || '—'}. Mensagem: ${msg}`;
+  openWhats(texto); form.reset();
+});
+whatsBtn.addEventListener('click',(e)=>{ e.preventDefault(); openWhats('Olá! Gostaria de conversar sobre contabilidade/consultoria.') });
 
-  <!-- CTA REFORÇO -->
-  <section class="sec" style="background:var(--navy);color:#fff">
-    <div class="container">
-      <h2>Pronto para transformar a forma como lida com seu dinheiro?</h2>
-      <p class="lead" style="color:#d7e1f3">Vamos juntos construir uma base sólida para decisões seguras e resultados consistentes.</p>
-      <a class="btn btn-primary" href="#contato" style="margin-top:12px">Agendar conversa gratuita</a>
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section class="sec contact" id="contato">
-    <div class="container">
-      <h2>Contato</h2>
-      <div class="grid-2" style="margin-top:12px">
-        <div class="card">
-          <strong>Fale comigo</strong>
-          <p class="lead">Envie uma mensagem que eu retorno rapidamente.</p>
-          <form class="form" id="form">
-            <label><input class="input" type="text" id="nome" name="nome" placeholder="Seu nome" required></label>
-            <label><input class="input" type="tel" id="whats" name="whats" placeholder="Seu WhatsApp (opcional)"></label>
-            <label><textarea id="msg" name="msg" placeholder="Como posso ajudar?" required></textarea></label>
-            <button class="btn btn-primary" type="submit">Enviar mensagem</button>
-          </form>
-        </div>
-        <div class="card">
-          <strong>Atendimento</strong>
-          <ul class="lead">
-            <li>Online e presencial (agenda sob consulta)</li>
-            <li>E-mail: <a href="mailto:contato@exemplo.com">contato@exemplo.com</a></li>
-            <li>WhatsApp: +55 63 99225-9297</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSTAGRAM -->
-  <section class="sec" aria-labelledby="ig">
-    <div class="container">
-      <h2 id="ig">No Instagram</h2>
-      <p class="lead">Alguns registros recentes.</p>
-      <div class="ig-grid" style="margin-top:12px">
-        <div class="ig-item"><img src="moment-1.jpg" alt="Publicação: escritório"></div>
-        <div class="ig-item"><img src="moment-2.jpg" alt="Publicação: expertise"></div>
-        <div class="ig-item"><img src="moment-3.jpg" alt="Publicação: ciclismo"></div>
-        <div class="ig-item"><img src="moment-4.jpg" alt="Publicação: trabalho em campo"></div>
-        <div class="ig-item"><img src="moment-2.jpg" alt="Publicação: estudo"></div>
-        <div class="ig-item"><img src="moment-1.jpg" alt="Publicação: mesa de trabalho"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CREDENCIAIS -->
-  <section class="sec" aria-label="Credenciais">
-    <div class="container">
-      <h2>Credenciais</h2>
-      <p class="lead">Registrado no CRC, com certificações em contabilidade, finanças e coaching empresarial.</p>
-    </div>
-  </section>
-
-  <!-- RODAPÉ -->
-  <footer>
-    <div class="container foot">
-      <div>© <span id="year"></span> Washington Assunção — Contabilidade & Consultoria</div>
-      <nav aria-label="Links do rodapé"><a href="#top">Início</a> · <a href="#servicos">Serviços</a> · <a href="#contato">Contato</a></nav>
-    </div>
-  </footer>
-
-  <!-- WhatsApp FAB -->
-  <a class="whats-fab" href="#" id="whatsBtn" aria-label="Abrir WhatsApp">WA</a>
-
-  <script>
-    // Menu mobile
-    const hamb = document.getElementById('hamb');
-    const menu = document.getElementById('menu');
-    hamb.addEventListener('click', () => {
-      const open = menu.classList.toggle('show');
-      hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> menu.classList.remove('show')));
-
-    // Carrossel
-    const carousel = document.getElementById('carousel');
-    document.getElementById('next').addEventListener('click', ()=> carousel.scrollBy({left: carousel.clientWidth*0.9, behavior:'smooth'}));
-    document.getElementById('prev').addEventListener('click', ()=> carousel.scrollBy({left: -carousel.clientWidth*0.9, behavior:'smooth'}));
-
-    // Form -> WhatsApp
-    const form = document.getElementById('form');
-    const whatsBtn = document.getElementById('whatsBtn');
-    const WHATS_NUMBER = '5563992259297'; // +55 63 99225-9297
-    function openWhats(msg){
-      const url = `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank','noopener');
-    }
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const nome = document.getElementById('nome').value.trim();
-      const tel = document.getElementById('whats').value.trim();
-      const msg = document.getElementById('msg').value.trim();
-      const texto = `Olá, meu nome é ${nome}. WhatsApp: ${tel || '—'}. Mensagem: ${msg}`;
-      openWhats(texto);
-      form.reset();
-    });
-    whatsBtn.addEventListener('click',(e)=>{
-      e.preventDefault();
-      openWhats('Olá! Gostaria de conversar sobre contabilidade/consultoria.');
-    });
-
-    // Ano rodapé
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+/* util */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
